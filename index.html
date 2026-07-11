@@ -94,7 +94,7 @@
       <div class="split-content animate-on-scroll">
         <div class="about-text">
           <h3>Established in 1966</h3>
-          <p>Zilla Parishad High School, Jonnavalasa was established in <strong>1966</strong> to serve Jonnavalasa and neighbouring rural communities in Vizianagaram district. Under the PM SHRI framework, the school is strengthening modern vocational learning, digitized mathematics practice, science laboratories, environmental education and robust sports participation.</p>
+          <p>Established in <strong>1966</strong>, Z.P. High School serves Jonnavalasa and surrounding rural communities in Vizianagaram district. Under PM SHRI, the school is advancing vocational learning, digital classrooms, science labs and sports.</p>
           <table class="profile-table">
             <tr><td>DISE School Code</td><td>28122800802</td></tr>
             <tr><td>Affiliation Type</td><td>State Board of Andhra Pradesh (SSC)</td></tr>
@@ -417,10 +417,48 @@
           <div class="result-ring" id="pass-ring" style="--progress:97"><span>Pass<br>rate</span></div>
         </div>
         <div class="result-chart" aria-label="Class 10 result trend chart">
-          <button class="result-bar active" type="button" data-year="2025" style="--bar:97"><span>97%</span><small>2025-26</small></button>
-          <button class="result-bar" type="button" data-year="2024" style="--bar:92"><span>92%</span><small>2024-25</small></button>
-          <button class="result-bar" type="button" data-year="2023" style="--bar:89"><span>89%</span><small>2023-24</small></button>
-          <button class="result-bar" type="button" data-year="2022" style="--bar:66"><span>66%</span><small>2022-23</small></button>
+          <div class="line-chart-wrap">
+            <svg class="line-chart-svg" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+              <!-- Grid lines -->
+              <line x1="0" y1="160" x2="400" y2="160" stroke="var(--line)" stroke-width="1"/>
+              <line x1="0" y1="120" x2="400" y2="120" stroke="var(--line)" stroke-width="1" stroke-dasharray="4,4"/>
+              <line x1="0" y1="80" x2="400" y2="80" stroke="var(--line)" stroke-width="1" stroke-dasharray="4,4"/>
+              <line x1="0" y1="40" x2="400" y2="40" stroke="var(--line)" stroke-width="1" stroke-dasharray="4,4"/>
+              <!-- Y axis labels -->
+              <text x="0" y="163" font-size="9" fill="var(--muted)" font-family="var(--font-mono)">60%</text>
+              <text x="0" y="123" font-size="9" fill="var(--muted)" font-family="var(--font-mono)">75%</text>
+              <text x="0" y="83" font-size="9" fill="var(--muted)" font-family="var(--font-mono)">88%</text>
+              <text x="0" y="43" font-size="9" fill="var(--muted)" font-family="var(--font-mono)">100%</text>
+              <!-- Filled area under line -->
+              <defs>
+                <linearGradient id="lineAreaGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="var(--coral)" stop-opacity="0.35"/>
+                  <stop offset="100%" stop-color="var(--coral)" stop-opacity="0.02"/>
+                </linearGradient>
+              </defs>
+              <!-- 2022-23: 66% → y=154, 2023-24: 89% → y=96, 2024-25: 92% → y=88, 2025-26: 97% → y=72 -->
+              <!-- x positions: 70, 170, 270, 370 -->
+              <path class="line-area" d="M70,154 L170,96 L270,88 L370,72 L370,160 L70,160 Z" fill="url(#lineAreaGrad)"/>
+              <!-- Line -->
+              <polyline class="line-path" points="70,154 170,96 270,88 370,72" fill="none" stroke="var(--coral)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- Data points -->
+              <circle class="line-dot" cx="70" cy="154" r="5" fill="var(--coral)" data-year="2022" data-val="66%"/>
+              <circle class="line-dot" cx="170" cy="96" r="5" fill="var(--coral)" data-year="2023" data-val="89%"/>
+              <circle class="line-dot" cx="270" cy="88" r="5" fill="var(--coral)" data-year="2024" data-val="92%"/>
+              <circle class="line-dot active-dot" cx="370" cy="72" r="7" fill="var(--gold)" data-year="2025" data-val="97%"/>
+              <!-- Value labels above dots -->
+              <text x="70" y="144" text-anchor="middle" font-size="10" font-weight="600" fill="var(--ink-light)" font-family="var(--font-heading)">66%</text>
+              <text x="170" y="86" text-anchor="middle" font-size="10" font-weight="600" fill="var(--ink-light)" font-family="var(--font-heading)">89%</text>
+              <text x="270" y="78" text-anchor="middle" font-size="10" font-weight="600" fill="var(--ink-light)" font-family="var(--font-heading)">92%</text>
+              <text x="370" y="60" text-anchor="middle" font-size="11" font-weight="700" fill="var(--gold)" font-family="var(--font-heading)">97%</text>
+              <!-- X axis year labels -->
+              <text x="70" y="178" text-anchor="middle" font-size="9" fill="var(--muted)" font-family="var(--font-mono)">2022-23</text>
+              <text x="170" y="178" text-anchor="middle" font-size="9" fill="var(--muted)" font-family="var(--font-mono)">2023-24</text>
+              <text x="270" y="178" text-anchor="middle" font-size="9" fill="var(--muted)" font-family="var(--font-mono)">2024-25</text>
+              <text x="370" y="178" text-anchor="middle" font-size="9" fill="var(--gold)" font-family="var(--font-mono)">2025-26</text>
+            </svg>
+            <p class="line-chart-label">SSC Pass Rate Trend — 4 Year Progress</p>
+          </div>
         </div>
       </div>
       <p class="result-footnote animate-on-scroll">Student-wise appeared, passed, topper and subject data can be added when you share the verified result sheet.</p>
@@ -598,19 +636,7 @@
     </div>
   </section>
 
-  <!-- CTA Banner -->
-  <section class="cta-banner">
-    <div class="container cta-box">
-      <div>
-        <p class="eyebrow light">JOIN OUR JOURNEY</p>
-        <h2>Where young minds<br>find their <em>way.</em></h2>
-      </div>
-      <div>
-        <p>Z.P. High School, Jonnavalasa — learning with purpose, growing with pride since 1966.</p>
-        <a class="btn btn-gold" href="#contact">Get in touch <span>→</span></a>
-      </div>
-    </div>
-  </section>
+
 
   <!-- 21. Footer -->
   <footer class="footer">

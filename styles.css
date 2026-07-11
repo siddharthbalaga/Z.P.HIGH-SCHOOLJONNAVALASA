@@ -501,8 +501,8 @@ h1, h2, h3, h4, h5, h6 {
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(90deg, rgba(15, 43, 31, 0.85) 0%, rgba(15, 43, 31, 0.3) 60%, transparent 100%),
-    linear-gradient(0deg, rgba(15, 43, 31, 0.7) 0%, transparent 50%);
+    linear-gradient(90deg, rgba(15, 43, 31, 0.88) 0%, rgba(15, 43, 31, 0.4) 60%, transparent 100%),
+    linear-gradient(0deg, rgba(15, 43, 31, 0.75) 0%, transparent 50%);
 }
 
 .hero-content {
@@ -654,6 +654,20 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 767px) {
   .hero {
     min-height: 85vh;
+  }
+
+  .hero-overlay {
+    background:
+      linear-gradient(180deg, rgba(15,43,31,0.55) 0%, rgba(15,43,31,0.92) 60%, rgba(15,43,31,0.97) 100%);
+  }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 8vw, 3.5rem);
+    text-shadow: 0 2px 16px rgba(0,0,0,0.5);
+  }
+
+  .eyebrow.light {
+    text-shadow: 0 1px 8px rgba(0,0,0,0.4);
   }
 
   .hero-stamp {
@@ -2618,23 +2632,67 @@ textarea.form-control {
 }
 
 .result-chart {
-  min-height: 320px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
-  align-items: end;
-  padding: 34px;
+  padding: 28px 34px;
   border-left: 1px solid var(--line);
-  border-right: 0;
-  background:
-    linear-gradient(to top, rgba(15, 43, 31, 0.08) 1px, transparent 1px) 0 0 / 100% 25%,
-    rgba(255, 255, 255, 0.42);
+  display: flex;
+  align-items: stretch;
+  background: rgba(255,255,255,0.42);
 }
 
 [data-theme='dark'] .result-chart {
-  background:
-    linear-gradient(to top, rgba(255, 255, 255, 0.08) 1px, transparent 1px) 0 0 / 100% 25%,
-    rgba(255, 255, 255, 0.03);
+  background: rgba(255,255,255,0.03);
+}
+
+/* Line Chart */
+.line-chart-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.line-chart-svg {
+  width: 100%;
+  height: auto;
+  min-height: 180px;
+  overflow: visible;
+}
+
+.line-path {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: drawLine 1.4s ease forwards 0.3s;
+}
+
+@keyframes drawLine {
+  to { stroke-dashoffset: 0; }
+}
+
+.line-dot {
+  opacity: 0;
+  animation: fadeInDot 0.4s ease forwards;
+}
+.line-dot:nth-child(1) { animation-delay: 0.8s; }
+.line-dot:nth-child(2) { animation-delay: 1.0s; }
+.line-dot:nth-child(3) { animation-delay: 1.2s; }
+.line-dot:nth-child(4) { animation-delay: 1.4s; }
+
+.active-dot {
+  filter: drop-shadow(0 0 6px var(--gold));
+}
+
+@keyframes fadeInDot {
+  to { opacity: 1; }
+}
+
+.line-chart-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  text-align: center;
+  margin: 0;
 }
 
 .result-bar {

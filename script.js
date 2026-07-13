@@ -625,6 +625,56 @@
   });
 
   /* ----------------------------------------------------------
+     NEWS FILTER
+     ---------------------------------------------------------- */
+
+  function initNewsFilter() {
+    const tabs = document.querySelectorAll('[data-news-filter]');
+    const cards = document.querySelectorAll('.news-card');
+    if (!tabs.length || !cards.length) return;
+
+    // Wire up onerror for each news image → show newspaper placeholder
+    document.querySelectorAll('.news-card-img-wrap img').forEach(img => {
+      const wrap = img.closest('.news-card-img-wrap');
+      const badge = wrap ? wrap.querySelector('.news-source-badge') : null;
+      if (wrap && badge) {
+        // Copy source name into data-source for CSS content
+        wrap.dataset.source = badge.textContent.trim();
+      }
+      img.addEventListener('error', () => {
+        const w = img.closest('.news-card-img-wrap');
+        if (w) {
+          w.classList.add('img-missing');
+          img.style.display = 'none';
+        }
+      });
+      // Trigger immediately if already broken (cached 404)
+      if (img.complete && !img.naturalWidth) {
+        img.dispatchEvent(new Event('error'));
+      }
+    });
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Update active tab
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const filter = tab.dataset.newsFilter;
+
+        cards.forEach(card => {
+          const cat = card.dataset.newsCategory;
+          if (filter === 'all' || cat === filter) {
+            card.classList.remove('news-hidden');
+          } else {
+            card.classList.add('news-hidden');
+          }
+        });
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------
      INIT — Boot everything on DOMContentLoaded
      ---------------------------------------------------------- */
 
@@ -638,6 +688,7 @@
     initTimeline();
     initGalleryFilter();
     initLightbox();
+    initNewsFilter();
     initBackToTop();
 
     // Attach optimised scroll listener (passive for performance)
@@ -655,3 +706,4 @@
     );
   });
 })();
+

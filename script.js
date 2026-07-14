@@ -674,11 +674,19 @@
     });
   }
 
+  /* Place the official academic outcome ahead of image-led school stories. */
+  function prioritizeResults() {
+    const results = document.getElementById('results');
+    const innovations = document.getElementById('innovations');
+    if (results && innovations) innovations.before(results);
+  }
+
   /* ----------------------------------------------------------
      INIT — Boot everything on DOMContentLoaded
      ---------------------------------------------------------- */
 
   document.addEventListener('DOMContentLoaded', () => {
+    prioritizeResults();
     initLoader();
     initMobileMenu();
     initSmoothScroll();
@@ -706,4 +714,3 @@
     );
   });
 })();
-

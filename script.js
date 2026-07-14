@@ -236,7 +236,9 @@
           }
         });
       },
-      { threshold: 0.15 }
+      // Large photo grids can be taller than a phone viewport. Reveal as soon as
+      // a small portion enters view so they never remain invisible on mobile.
+      { threshold: 0.01 }
     );
 
     elements.forEach((el) => observer.observe(el));
@@ -251,7 +253,7 @@
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.01 }
     );
 
     staggerParents.forEach((parent) => staggerObserver.observe(parent));

@@ -1333,6 +1333,10 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 16px;
 }
 
+.infra-img-pair > :only-child {
+  grid-column: 1 / -1;
+}
+
 .infra-img-container {
   overflow: hidden;
   border-radius: var(--radius-sm);
@@ -1358,8 +1362,37 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 6px;
 }
 
+.infra-features {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.infra-features span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 72px;
+  padding: 14px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.42);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.infra-features i {
+  color: var(--accent);
+}
+
 @media (max-width: 767px) {
   .infra-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .infra-features {
     grid-template-columns: 1fr;
   }
 }
@@ -1805,6 +1838,14 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 767px) {
   .activities-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Long photo grids exceed a phone viewport, so do not leave their cards
+     dependent on a scroll observer before they can be read. */
+  .activities-grid.animate-on-scroll,
+  .activities-grid.stagger-children > * {
+    opacity: 1;
+    transform: none;
   }
 }
 
